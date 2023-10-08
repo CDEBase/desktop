@@ -3,7 +3,7 @@ import { ApolloProvider } from '@apollo/client';
 import { Provider } from 'react-redux';
 import { SlotFillProvider } from '@common-stack/components-pro';
 import { PluginArea, InversifyProvider } from '@common-stack/client-react';
-import { ConnectedRouter } from 'connected-react-router';
+import { ReduxRouter } from '@lagunovsky/redux-react-router';
 import { PersistGate } from 'redux-persist/integration/react';
 import { ErrorBoundary } from '@admin-layout/ant-ui';
 import { persistStore } from 'redux-persist';
@@ -26,9 +26,9 @@ export class Main extends React.Component<{}, {}> {
                                     <PersistGate persistor={persistor}>
                                         <PluginArea />
                                         {modules.getWrappedRoot(
-                                            <ConnectedRouter history={history}>
+                                            <ReduxRouter history={history}>
                                                 <MainRoute />
-                                            </ConnectedRouter>,
+                                            </ReduxRouter>,
                                         )}
                                     </PersistGate>
                             </InversifyProvider>

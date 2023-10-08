@@ -4,7 +4,7 @@
 /* eslint-disable no-underscore-dangle */
 import { forwardToMain, replayActionRenderer, forwardToMainWithParams, getInitialStateRenderer } from 'electron-redux';
 import { createEpicMiddleware } from 'redux-observable';
-import { connectRouter, routerMiddleware } from 'connected-react-router';
+import { createRouterReducer, createRouterMiddleware } from '@lagunovsky/redux-react-router';
 import modules from '../../modules/tray';
 import { createClientContainer } from './client.service';
 import { isDev } from '../../../common';
@@ -30,7 +30,7 @@ export const epicMiddleware = createEpicMiddleware({
  */
 export const createReduxStore = () => {
     // middleware
-    const router = connectRouter(history);
+    const router = createRouterReducer(history);
 
     // If we have preloaded state, save it.
     const store = createBaseReduxStore({
@@ -38,7 +38,7 @@ export const createReduxStore = () => {
         isDebug: __DEBUGGING__,
         isDev,
         initialState: {},
-        middleware: [routerMiddleware(history)],
+        middleware: [createRouterMiddleware(history)],
         // epicMiddleware,
         preMiddleware: [
             forwardToMainWithParams({

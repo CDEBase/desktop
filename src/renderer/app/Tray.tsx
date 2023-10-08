@@ -3,7 +3,7 @@ import { ApolloProvider } from '@apollo/client';
 import { Provider } from 'react-redux';
 import { createClientContainer } from '../config/main/client.service';
 import { epic$ } from '../config/tray/epic-config';
-import { ConnectedRouter } from 'connected-react-router';
+import { ReduxRouter } from '@lagunovsky/redux-react-router';
 import { createReduxStore, history } from '../config/tray/redux-config';
 import { MainRoute } from '../modules/tray';
 import { ErrorBoundary } from './ErrorBoundary';
@@ -44,9 +44,9 @@ export class Main extends React.Component<{}, {}> {
             <ErrorBoundary>
                 <Provider store={store}>
                     <ApolloProvider client={client}>
-                        <ConnectedRouter history={history}>
+                        <ReduxRouter history={history}>
                             <MainRoute />
-                        </ConnectedRouter>,
+                        </ReduxRouter>,
                     </ApolloProvider>
                 </Provider>
             </ErrorBoundary>

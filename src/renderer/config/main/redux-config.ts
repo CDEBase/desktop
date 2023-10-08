@@ -8,7 +8,7 @@ import storage from 'redux-persist/lib/storage';
 import { combineReducers } from 'redux';
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 import { createEpicMiddleware } from 'redux-observable';
-import { connectRouter, routerMiddleware } from 'connected-react-router';
+import { createRouterReducer, createRouterMiddleware } from '@lagunovsky/redux-react-router';
 import { persistReducer } from 'redux-persist';
 import { REDUX_PERSIST_KEY } from '@common-stack/client-core';
 import thunkMiddleware from 'redux-thunk';
@@ -41,7 +41,7 @@ export const persistConfig = {
 
 export const storeReducer = (hist) =>
     combineReducers({
-        router: connectRouter(hist),
+        router: createRouterReducer(hist),
         ...modules.reducers,
     });
 
@@ -51,7 +51,7 @@ export const storeReducer = (hist) =>
  */
 export const createReduxStore = () => {
     // middleware
-    const router = connectRouter(history);
+    const router = createRouterReducer(history);
 
     let store;
     if ((module as any).hot && (module as any).hot.data && (module as any).hot.data.store) {
@@ -76,7 +76,7 @@ export const createReduxStore = () => {
             isDev,
             initialState: {},
             persistConfig,
-            middleware: [thunkMiddleware, routerMiddleware(history)],
+            middleware: [thunkMiddleware, createRouterMiddleware(history)],
             epicMiddleware,
             preMiddleware: [
                 forwardToMainWithParams({

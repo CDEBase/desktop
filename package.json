@@ -96,7 +96,6 @@
     }
   },
   "dependencies": {
-    "@admin-layout/ant-ui": "^3.0.0-alpha.116",
     "@ant-design/icons": "^5.0.1",
     "@apollo/client": "~3.7.1",
     "@cdm-logger/client": "^7.0.14",

@@ -43,6 +43,10 @@ const common = {
     '@typescript-eslint/no-shadow': 'error',
     '@typescript-eslint/no-unused-vars': 'error',
   },
+  parserOptions: {
+    ecmaVersion: 2022,
+    sourceType: 'module',
+  },
   globals: {
     fetch: true,
     window: true,
@@ -101,32 +105,18 @@ module.exports = {
               '.gql',
             ],
           },
+          webpack: {
+            config: require.resolve('./.erb/configs/webpack.config.eslint.ts'),
+          },
           typescript: {
-            // alwaysTryTypes: true,
             // paths: './tsconfig.json',
           },
         },
       },
     },
     {
-      files: ['**/store/models/*.ts'],
-      rules: {
-        'no-underscore-dangle': 'off',
-        'no-param-reassign': 'off',
-        'func-names': 'off',
-      },
-    },
-    {
-      files: ['**/services/*.ts'],
-      rules: {
-        'no-useless-constructor': 'off',
-      },
-    },
-    {
-      files: ['**/server/**/store/**/*.ts'],
-      rules: {
-        'jest/require-hook': 'off',
-      },
+      files: ['**/*.tsx'],
+      parser: '@typescript-eslint/parser',
     },
   ],
 };

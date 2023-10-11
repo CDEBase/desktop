@@ -1,3 +1,4 @@
+/* eslint-disable jest/require-hook */
 /**
  * Build config for electron renderer process
  */

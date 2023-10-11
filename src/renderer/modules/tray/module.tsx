@@ -4,13 +4,13 @@ import { Layout } from 'antd';
 
 const features = new Feature(FeatureWithRouterFactory);
 export const MainRoute = (props) => (
-    <Layout>
-        <Layout.Content style={{ height: '100%' }}>
-            <section className="flex-grow" style={{ height: '100%' }}>
-                {features.getRoutes()}
-            </section>
-        </Layout.Content>
-    </Layout>
+  <Layout>
+    <Layout.Content style={{ height: '100%' }}>
+      <section className="flex-grow" style={{ height: '100%' }}>
+        {features.getRoutes()}
+      </section>
+    </Layout.Content>
+  </Layout>
 );
 
 export default features;

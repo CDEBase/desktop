@@ -1,3 +1,4 @@
+/* eslint-disable jest/require-hook, @typescript-eslint/no-var-requires */
 /**
  * Builds the DLL for development electron renderer process
  */

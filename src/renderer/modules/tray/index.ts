@@ -1,14 +1,14 @@
+/* eslint-disable @typescript-eslint/no-explicit-any, jest/require-hook, no-useless-constructor, no-empty-function */
 import { logger } from '@cdm-logger/client';
 import { ClientTypes } from '@common-stack/client-react';
 import modules, { MainRoute } from './module';
 
 class UtilityClass {
-    // eslint-disable-next-line no-useless-constructor
-    constructor(private modules) {}
+  constructor(private _instance) {}
 
-    public getCacheKey(storeObj) {
-        return this.modules.getDataIdFromObject(storeObj);
-    }
+  public getCacheKey(storeObj) {
+    return this._instance.getDataIdFromObject(storeObj);
+  }
 }
 
 const utility = new UtilityClass(modules);

@@ -15,27 +15,27 @@ const { apolloClient: client, container } = createClientContainer();
 
 const { store, history } = createReduxStore();
 export class Main extends React.Component<{}, {}> {
-    render() {
-        const persistor = persistStore(store);
-        return (
-            <SlotFillProvider>
-                <Provider store={store}>
-                    <ApolloProvider client={client}>
-                        <InversifyProvider container={container} modules={modules}>
-                                <PersistGate persistor={persistor}>
-                                    <PluginArea />
-                                    {modules.getWrappedRoot(
-                                        <ReduxRouter history={history}>
-                                            <MainRoute />
-                                        </ReduxRouter>,
-                                    )}
-                                </PersistGate>
-                        </InversifyProvider>
-                    </ApolloProvider>
-                </Provider>
-            </SlotFillProvider>
-        );
-    }
+  render() {
+    const persistor = persistStore(store);
+    return (
+      <SlotFillProvider>
+        <Provider store={store}>
+          <ApolloProvider client={client}>
+            <InversifyProvider container={container} modules={modules}>
+                <PersistGate persistor={persistor}>
+                  <PluginArea />
+                  {modules.getWrappedRoot(
+                    <ReduxRouter history={history}>
+                      <MainRoute />
+                    </ReduxRouter>,
+                  )}
+                </PersistGate>
+            </InversifyProvider>
+          </ApolloProvider>
+        </Provider>
+      </SlotFillProvider>
+    );
+  }
 }
 
 export default Main;

@@ -1,3 +1,4 @@
+/* eslint-disable jest/require-hook */
 /**
  * Webpack config for production electron main process
  */

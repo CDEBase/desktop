@@ -22,12 +22,22 @@
     "noImplicitAny": false,
     "pretty": true,
     "removeComments": false,
-    "outDir": ".erb/dll"
+    "outDir": ".erb/dll",
+    "skipLibCheck": true,
+    "typeRoots": [
+      "./**/*.d.ts",
+      "node_modules/@types"
+    ],
+    "types": [
+      "node",
+      "jest"
+    ]
   },
   "exclude": [
     "test",
     "release/build",
     "release/app/dist",
-    ".erb/dll"
+    ".erb/dll",
+    "node_modules"
   ]
 }

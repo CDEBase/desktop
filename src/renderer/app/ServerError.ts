@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 class ServerError extends Error {
   constructor(error: any) {
     super();

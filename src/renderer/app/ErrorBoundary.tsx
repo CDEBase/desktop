@@ -11,7 +11,7 @@ export class ErrorBoundary extends React.Component<any, IErrorBoundryState> {
     if (serverError) {
       this.state = { error: new ServerError(serverError), type: 'serverError' };
     } else {
-      this.state = { error: undefined, type: undefined };
+      this.state = { error: undefined, type: '' };
     }
   }
 

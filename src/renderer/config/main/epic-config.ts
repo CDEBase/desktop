@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { combineEpics, ofType } from 'redux-observable';
 import { BehaviorSubject } from 'rxjs';
 import { mergeMap, takeUntil } from 'rxjs/operators';

@@ -42,6 +42,7 @@ const common = {
     'jsonc/indent': ['error', 2],
     '@typescript-eslint/no-shadow': 'error',
     '@typescript-eslint/no-unused-vars': 'error',
+    '@typescript-eslint/no-explicit-any': 'off',
   },
   parserOptions: {
     ecmaVersion: 2022,

@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any, jest/require-hook, no-useless-constructor, no-empty-function */
+/* eslint-disable jest/require-hook, no-useless-constructor, no-empty-function */
 import { logger } from '@cdm-logger/client';
 import { ClientTypes } from '@common-stack/client-react';
 import modules, { MainRoute } from './module';

@@ -1,6 +1,5 @@
 // version 11/12/2021
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable prettier/prettier, global-require */
 /* eslint-disable no-underscore-dangle */
@@ -94,7 +93,7 @@ export const createReduxStore = ({
   const store = createStore(persistedReducer, initialState, composeEnhancers(...enhancers()));
   if (isBrowser || isElectronMain) {
     // no SSR for now
-    if (epicMiddleware) {
+    if (epicMiddleware && rootEpic) {
       epicMiddleware.run(rootEpic);
     }
   }

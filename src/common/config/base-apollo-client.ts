@@ -1,7 +1,7 @@
 // version 09/18/2021
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable prettier/prettier, no-underscore-dangle, global-require */
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/no-explicit-any, @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/no-var-requires */
 import { ApolloClient, ApolloClientOptions, ApolloLink } from '@apollo/client';
 import { InMemoryCache } from '@apollo/client/cache';
 import { HttpLink, createHttpLink } from '@apollo/client/link/http';
@@ -30,7 +30,7 @@ interface IApolloClientParams {
   isDev: boolean;
   isSSR: boolean;
   httpGraphqlURL: string;
-  httpLocalGraphqlURL: string;
+  httpLocalGraphqlURL?: string;
   logger: CdmLogger.ILogger;
 }
 
@@ -112,8 +112,8 @@ export const createApolloClient = ({
         url: httpGraphqlURL.replace(/^http/, 'ws'),
         retryAttempts: 10,
         lazy: true,
-        reconnect: true,
-        timeout: 30000,
+        // reconnect: true,
+        // timeout: 30000,
         shouldRetry: () => true,
         keepAlive: 10000,
         connectionParams,
@@ -121,9 +121,15 @@ export const createApolloClient = ({
           connected: (socket) => {
             activeSocket = socket
           },
-          error: async (error: Error[]) => {
-            logger.error(error, '[WS connectionCallback error] %j');
-            const promises = (clientState.connectionCallbackFuncs || []).map((func) => func(wsLink, error, {}));
+          error: async (error: unknown) => {
+            let errors: Error[] = [];
+            if (typeof error === "object") {
+              if (Array.isArray(error)) {
+                errors = error;
+              }
+            }
+            logger.error(errors, '[WS connectionCallback error] %j');
+            const promises = (clientState.connectionCallbackFuncs || []).map((func) => func(wsLink, errors, {}));
             try {
               await promises;
             } catch (err) {

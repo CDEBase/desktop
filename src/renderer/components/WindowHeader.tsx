@@ -1,6 +1,20 @@
 import * as React from 'react';
 
-export class WindowHeader extends React.Component {
+export namespace IWindowHeader {
+  export interface CompProps {
+    close: boolean;
+    minimize: boolean;
+    maximize: boolean;
+    title: string;
+  }
+
+  export type Props = CompProps;
+}
+
+/* this code is temparay, will be remove once service connected */
+let remote: any;
+
+export class WindowHeader extends React.Component<IWindowHeader.Props> {
   handleWindowClose = () => {
     if (this.props.close) {
       remote.app.dock.hide();

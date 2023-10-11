@@ -1,5 +1,4 @@
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { lowerCase } from 'lodash';
 
 /**

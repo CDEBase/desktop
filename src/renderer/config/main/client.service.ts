@@ -1,12 +1,11 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ClientTypes } from '@common-stack/client-core';
 import { Container } from 'inversify';
 import { ApolloClient } from '@apollo/client';
 import { CdmLogger } from '@cdm-logger/core';
 import { logger } from '@cdm-logger/client';
-import { IpcBusClient } from 'electron-common-ipc';
+import { CreateIpcBusClient } from 'electron-common-ipc';
 import modules, { container } from '../../modules/main';
 import { createApolloClient } from '../../../common/config/base-apollo-client';
 import { PUBLIC_SETTINGS } from '../public-config';
@@ -37,7 +36,7 @@ export const createClientContainer = () => {
     initialState: null,
     logger,
   });
-  const ipcBusClientRenderer = IpcBusClient.Create();
+  const ipcBusClientRenderer = CreateIpcBusClient();
   ipcBusClientRenderer.connect().then(() => {
     console.log('---CLIENT_--- Isc connected');
     container.bind('Client', ipcBusClientRenderer);

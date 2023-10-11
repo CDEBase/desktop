@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier, global-require, no-underscore-dangle, no-nested-ternary, no-param-reassign */
-/* eslint-disable @typescript-eslint/no-var-requires, @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-var-requires */
 import { replayActionRenderer, forwardToMainWithParams } from 'electron-redux';
 import storage from 'redux-persist/lib/storage';
 import { combineReducers } from 'redux';
@@ -56,7 +56,8 @@ export const createReduxStore = () => {
     store = (module as any).hot.data.store;
     // replace the reducers always as we don't have ablity to find
     // new reducer added through our `modules`
-    store.replaceReducer(persistReducer(persistConfig, storeReducer((module as any).hot.data.history || history)));
+    const baseReducer = storeReducer((module as any).hot.data.history || history);
+    store.replaceReducer(persistReducer(persistConfig, (baseReducer as never)));
     // store.replaceReducer(storeReducer((module as any).hot.data.history || history));
   } else {
     // If we have preloaded state, save it.

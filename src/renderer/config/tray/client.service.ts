@@ -1,6 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ClientTypes } from '@common-stack/client-core';
 import { Container } from 'inversify';
 import { ApolloClient } from '@apollo/client';

@@ -1,4 +1,4 @@
-import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
+import { MemoryRouter as Router, Route } from 'react-router-dom';
 import icon from '../../assets/icon.svg';
 import './App.css';
 
@@ -39,12 +39,10 @@ function Hello() {
   );
 }
 
-export default function App() {
+export default () => {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Hello />} />
-      </Routes>
+      <Route path="/" element={<Hello />} />
     </Router>
   );
 }

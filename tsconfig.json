@@ -24,9 +24,6 @@
     "removeComments": false,
     "outDir": ".erb/dll"
   },
-  "include": [
-    "./typings/*.d.ts"
-  ],
   "exclude": [
     "test",
     "release/build",

@@ -1,3 +1,4 @@
+/* eslint-disable jest/require-hook, @typescript-eslint/no-var-requires */
 const path = require('path');
 
 const rootPath = path.join(__dirname, '../..');

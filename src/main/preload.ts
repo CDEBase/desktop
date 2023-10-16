@@ -1,5 +1,5 @@
 // Disable no-unused-vars, broken for spread args
-/* eslint no-unused-vars: off */
+/* eslint-disable no-unused-vars, jest/require-hook */
 import { contextBridge, ipcRenderer, IpcRendererEvent } from 'electron';
 
 export type Channels = 'ipc-example';
